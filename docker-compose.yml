@@ -1,0 +1,18 @@
+version: '3'
+services:
+  gpsd:
+    image: gpsd:testing
+    ports:
+      - 2948:2948
+      - 5001:5001/udp
+  zookeeper:
+    image: wurstmeister/zookeeper
+    ports:
+      - 2181:2181
+  kafka:
+    image: wurstmeister/kafka
+    ports:
+      - 9092:9092
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: ewan-750-274na
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
